@@ -22,4 +22,4 @@ phases:
 artifacts:
   type: zip
   files:
-    - app/build/outputs/apt/app-debug.apk
+    - app/build/outputs/apk/app-debug.apk
