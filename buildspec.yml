@@ -10,11 +10,11 @@ phases:
       - echo Nothing to do in the pre_build phase...
   build:
     commands:
-      - cd /usr/local && wget http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz && tar zxvf android-sdk_r24.4.1-linux.tgz && rm -rf /usr/local/android-sdk_r24.4.1-linux.tgz
-      - export ANDROID_HOME="/usr/local/android-sdk-linux"
-      - export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
-      - echo $ANDROID_HOME
-      - cp android-sdk-license $ANDROID_HOME/licenses/
+      - wget http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz
+      - tar zxvf android-sdk_r24.4.1-linux.tgz
+      - mkdir -p android-sdk-linux/licenses
+      - cp android-sdk-license ./android-sdk-linux/licenses/
+      - echo sdk.dir=`pwd`/android-sdk-linux > local.properties
       - ./gradlew assemble
   post_build:
     commands:
